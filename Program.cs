@@ -24,6 +24,29 @@ player1.Play(large);
 
 Console.WriteLine("-------------------");
 
+SmackTalkingPlayer smackTalkingPlayer = new SmackTalkingPlayer();
+smackTalkingPlayer.Name = "Humberton";
+smackTalkingPlayer.Taunt = "You fools are bout to git schooled";
+smackTalkingPlayer.ShowTaunt();
+
+smackTalkingPlayer.Play(player3);
+
+Console.WriteLine("-------------------");
+
+OneHigherPlayer oneHigherPlayer = new OneHigherPlayer();
+oneHigherPlayer.Name = "Johnny OneHigher";
+
+oneHigherPlayer.Play(smackTalkingPlayer);
+
+Console.WriteLine("-------------------");
+
+HumanPlayer humanPlayer = new HumanPlayer();
+humanPlayer.Name = "Bingo";
+
+humanPlayer.Play(large);
+
+Console.WriteLine("-------------------");
+
 List<Player> players = new List<Player>() {
     player1, player2, player3, large
 };
