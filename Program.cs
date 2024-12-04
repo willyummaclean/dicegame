@@ -48,7 +48,7 @@ humanPlayer.Play(large);
 Console.WriteLine("-------------------");
 
 List<Player> players = new List<Player>() {
-    player1, player2, player3, large
+    player1, player2, player3, large, smackTalkingPlayer
 };
 
 PlayMany(players);
@@ -78,7 +78,15 @@ static void PlayMany(List<Player> players)
 
         // Make adjacent players play noe another
         Player player1 = shuffledPlayers[i];
+        if (player1 is SmackTalkingPlayer smackTalkingPlayer1)
+        {
+            smackTalkingPlayer1.ShowTaunt();
+        }
         Player player2 = shuffledPlayers[i + 1];
+        if (player2 is SmackTalkingPlayer smackTalkingPlayer2)
+        {
+            smackTalkingPlayer2.ShowTaunt();
+        }
         player1.Play(player2);
     }
 }
