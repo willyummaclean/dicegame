@@ -73,7 +73,7 @@ soreLoserUpperHalfPlayer.Name = "Crumbo";
 try
 {
     // Try to make the players play against each other
-    soreLoserPlayer.Play(large);
+    soreLoserUpperHalfPlayer.Play(large);
 }
 catch (Exception ex)
 {
