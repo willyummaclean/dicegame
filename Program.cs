@@ -47,8 +47,34 @@ humanPlayer.Play(large);
 
 Console.WriteLine("-------------------");
 
+CreativeSmackTalkingPlayer creativeSmackTalkingPlayer = new CreativeSmackTalkingPlayer();
+creativeSmackTalkingPlayer.Name = "Bongo";
+creativeSmackTalkingPlayer.Taunts = ["Get Ready to Loose", "You don't stand a chance", "Watch this, chump   "];
+creativeSmackTalkingPlayer.ShowTaunt();
+creativeSmackTalkingPlayer.Play(oneHigherPlayer);
+
+Console.WriteLine("-------------------");
+
+SoreLoserPlayer soreLoserPlayer = new SoreLoserPlayer();
+soreLoserPlayer.Name = "Whinny";
+
+
+
+try
+{
+    // Try to make the players play against each other
+    soreLoserPlayer.Play(large);
+}
+catch (Exception ex)
+{
+    // Catch and display the exception if a player loses badly
+    Console.WriteLine($"An exception occurred: {ex.Message}");
+}
+
+Console.WriteLine("-------------------");
+
 List<Player> players = new List<Player>() {
-    player1, player2, player3, large, smackTalkingPlayer
+    player1, player2, player3, large, smackTalkingPlayer, oneHigherPlayer, creativeSmackTalkingPlayer, humanPlayer
 };
 
 PlayMany(players);
@@ -82,10 +108,18 @@ static void PlayMany(List<Player> players)
         {
             smackTalkingPlayer1.ShowTaunt();
         }
+        else if (player1 is CreativeSmackTalkingPlayer creativeSmackTalkingPlayer1)
+        {
+            creativeSmackTalkingPlayer1.ShowTaunt();
+        }
         Player player2 = shuffledPlayers[i + 1];
         if (player2 is SmackTalkingPlayer smackTalkingPlayer2)
         {
             smackTalkingPlayer2.ShowTaunt();
+        }
+        else if (player2 is CreativeSmackTalkingPlayer creativeSmackTalkingPlayer2)
+        {
+            creativeSmackTalkingPlayer2.ShowTaunt();
         }
         player1.Play(player2);
     }
