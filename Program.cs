@@ -17,6 +17,12 @@ player3.Play(player2);
 
 Console.WriteLine("-------------------");
 
+UpperHalfPlayer upperHalfPlayer = new UpperHalfPlayer();
+upperHalfPlayer.Name = "Shakey";
+upperHalfPlayer.Play(player2);
+
+Console.WriteLine("-------------------");
+
 Player large = new LargeDicePlayer();
 large.Name = "Bigun Rollsalot";
 
@@ -58,6 +64,10 @@ Console.WriteLine("-------------------");
 SoreLoserPlayer soreLoserPlayer = new SoreLoserPlayer();
 soreLoserPlayer.Name = "Whinny";
 
+Console.WriteLine("-------------------");
+
+SoreLoserUpperHalfPlayer soreLoserUpperHalfPlayer = new SoreLoserUpperHalfPlayer();
+soreLoserUpperHalfPlayer.Name = "Crumbo";
 
 
 try
@@ -74,7 +84,10 @@ catch (Exception ex)
 Console.WriteLine("-------------------");
 
 List<Player> players = new List<Player>() {
-    player1, player2, player3, large, smackTalkingPlayer, oneHigherPlayer, creativeSmackTalkingPlayer, humanPlayer
+    player1, player2, player3, large, smackTalkingPlayer, oneHigherPlayer,
+    creativeSmackTalkingPlayer, humanPlayer, soreLoserPlayer, upperHalfPlayer,
+    soreLoserUpperHalfPlayer
+
 };
 
 PlayMany(players);
@@ -121,6 +134,17 @@ static void PlayMany(List<Player> players)
         {
             creativeSmackTalkingPlayer2.ShowTaunt();
         }
-        player1.Play(player2);
+
+
+        try
+        {
+            // Try to make the players play against each other
+            player1.Play(player2);
+        }
+        catch (Exception ex)
+        {
+            // Catch and display the exception if a player loses badly
+            Console.WriteLine($"An exception occurred: {ex.Message}");
+        }
     }
 }
